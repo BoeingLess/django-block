@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "django-block"
+version = "0.1.0"
+description = ""
+authors = ["boeing.less <neymar.1108@mail.ru>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/BoeingLess/django-block"
+repository = "https://github.com/BoeingLess/django-block"
+packages = [
+    { include = "django_blog", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+ruff = "^0.2.0"
+pytest-cov = "^4.1.0"
+black = "^24.1.1"
+bandit = "^1.7.7"
+mypy = "^1.8.0"
+pre-commit = "^3.6.0"
+
+[tool.poetry.scripts]
+django-blog = "django_blog.__main__:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+backend-path = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+testpaths = "tests"
+
+[tool.black]
+line_length = 88
+
+[tool.ruff]
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "venv",
+]
+ignore = []
+line-length = 90
+select = [
+    "E",
+    "F",
+    "W",
+    "I001",
+]
+src = ["src", "tests"]
+
+[mypy]
+files = ["src"]
+strict_optional = false
